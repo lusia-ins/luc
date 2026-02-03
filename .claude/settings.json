@@ -1,0 +1,13 @@
+{
+  "project": {
+    "name": "LUC - Insurance Agent Linktree",
+    "description": "A Linktree-style landing page for insurance agent",
+    "language": "he",
+    "direction": "rtl"
+  },
+  "preferences": {
+    "codeStyle": "typescript",
+    "cssFramework": "tailwindcss",
+    "bundler": "vite"
+  }
+}
