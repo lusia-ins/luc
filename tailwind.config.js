@@ -31,7 +31,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Heebo', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        sans: ['Assistant', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        heading: ['Rubik', 'Assistant', 'sans-serif'],
       },
       maxWidth: {
         'container': '1240px',

@@ -2,13 +2,13 @@ import { Config } from '../data/config';
 
 export function renderApp(config: Config): string {
   return `
-    <!-- Fixed Side Contact Buttons - Desktop Only -->
-    <div class="fixed left-0 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col shadow-lg rounded-r-lg overflow-hidden">
+    <!-- Fixed Side Contact Buttons - All Screens (Right side for RTL) -->
+    <div id="sidebar" class="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex flex-col shadow-lg rounded-l-lg overflow-hidden">
       <a
-        href="#services"
+        href="#contact"
         class="side-button bg-slate-800 text-white"
-        title="לשירותים"
-        aria-label="מעבר לשירותים"
+        title="יצירת קשר"
+        aria-label="מעבר ליצירת קשר"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
       </a>
@@ -32,73 +32,54 @@ export function renderApp(config: Config): string {
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
       </a>
-      <a
-        href="mailto:${config.contact.email}"
-        class="side-button bg-red-400 text-white"
-        title="שלחו אימייל"
-        aria-label="שלח אימייל"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-      </a>
-      <a
-        href="tel:${config.contact.phone}"
-        class="side-button bg-green-400 text-white"
-        title="התקשרו אלי"
-        aria-label="התקשר עכשיו"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      </a>
     </div>
 
-    <!-- Mobile Floating WhatsApp Button -->
-    <a
-      href="https://wa.me/${config.contact.whatsapp}?text=${encodeURIComponent('היי לוסיה, אשמח לשמוע פרטים נוספים')}"
-      class="mobile-whatsapp-btn md:hidden"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="שלח הודעת WhatsApp"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    </a>
 
     <!-- Hero Section with Background Image -->
-    <section class="hero-section relative min-h-[100svh] flex items-center overflow-hidden">
+    <section class="hero-section relative min-h-[100svh] flex flex-col overflow-hidden">
       <!-- Background Image -->
       <div class="absolute inset-0">
         <img
           src="/luc1.png"
           alt="לוסיה רחמילוב - יועצת ביטוח"
-          class="w-full h-full object-cover object-[70%_center] md:object-center"
+          class="w-full h-full object-cover object-[55%_center] md:object-center"
           loading="eager"
         />
         <!-- Gradient Overlay - Optimized for text readability -->
         <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-slate-900/90 via-slate-900/60 to-slate-900/30 md:from-slate-900/80 md:via-slate-900/50 md:to-transparent"></div>
       </div>
 
+      <!-- Top Header Bar with Logo -->
+      <div class="relative z-30 w-full bg-gradient-to-b from-white/90 to-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2 sm:py-3 flex justify-start">
+          <img
+            src="/logo/logo-cropped.svg"
+            alt="${config.profile.name}"
+            class="h-20 sm:h-28 md:h-36 lg:h-40 w-auto"
+          />
+        </div>
+      </div>
+
       <!-- Content -->
-      <div class="relative z-20 w-full max-w-7xl mx-auto px-5 sm:px-6 md:px-8 py-8 md:py-16">
-        <div class="max-w-xl mx-auto md:mx-0 md:mr-0 md:ml-auto text-center md:text-right mt-auto md:mt-0 pt-[45vh] md:pt-0">
+      <div class="relative z-20 flex-1 flex items-end md:items-center justify-center w-full px-5 sm:px-6 md:px-8 pb-16 pt-4 md:py-20">
+        <div class="text-center w-full max-w-4xl">
           <!-- Name and Title -->
           <div class="animate-fade-in-up">
-            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 md:mb-4 drop-shadow-lg leading-tight">
+            <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-4 md:mb-6 drop-shadow-lg leading-tight">
               ${config.profile.name}
             </h1>
-            <p class="text-lg sm:text-xl md:text-2xl text-primary-300 font-medium mb-2 md:mb-3">
+            <p class="text-xl sm:text-2xl md:text-3xl text-primary-300 font-medium mb-3 md:mb-4">
               ${config.profile.title}
             </p>
-            <p class="text-base sm:text-lg md:text-xl text-slate-200 mb-6 md:mb-8 leading-relaxed">
+            <p class="text-lg sm:text-xl md:text-2xl text-slate-200 mb-8 md:mb-12 leading-relaxed max-w-2xl mx-auto">
               ${config.profile.bio}
             </p>
           </div>
 
-          <!-- CTA Buttons -->
-          <div class="animate-fade-in-up animation-delay-200 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-end">
-            <a href="#services" class="cta-button-hero">
-              לשירותים שלי
-            </a>
-            <a href="tel:${config.contact.phone}" class="cta-button-secondary">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <span>התקשרו עכשיו</span>
+          <!-- CTA Button -->
+          <div class="animate-fade-in-up animation-delay-200">
+            <a href="#contact" class="cta-button-hero text-lg px-10 py-4">
+              לשיחת מיפוי פנסיוני
             </a>
           </div>
         </div>
@@ -107,17 +88,6 @@ export function renderApp(config: Config): string {
       <!-- Scroll Indicator -->
       <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 animate-bounce hidden md:block">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-60"><path d="m6 9 6 6 6-6"/></svg>
-      </div>
-    </section>
-
-    <!-- Brand Section -->
-    <section class="py-8 md:py-12 bg-white">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-        <img
-          src="/logo/13-01.svg"
-          alt="${config.profile.name}"
-          class="h-20 sm:h-24 md:h-28 w-auto mx-auto"
-        />
       </div>
     </section>
 
@@ -213,11 +183,11 @@ export function renderApp(config: Config): string {
       <div class="max-w-4xl mx-auto px-4 sm:px-6">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 text-center">
           <div class="trust-item">
-            <div class="text-3xl md:text-4xl font-bold text-primary-600 mb-1">15+</div>
+            <div class="text-3xl md:text-4xl font-bold text-primary-600 mb-1">7+</div>
             <div class="text-sm md:text-base text-slate-500">שנות ניסיון</div>
           </div>
           <div class="trust-item">
-            <div class="text-3xl md:text-4xl font-bold text-primary-600 mb-1">500+</div>
+            <div class="text-3xl md:text-4xl font-bold text-primary-600 mb-1">50+</div>
             <div class="text-sm md:text-base text-slate-500">לקוחות מרוצים</div>
           </div>
           <div class="trust-item">
@@ -225,8 +195,8 @@ export function renderApp(config: Config): string {
             <div class="text-sm md:text-base text-slate-500">שקיפות מלאה</div>
           </div>
           <div class="trust-item">
-            <div class="text-3xl md:text-4xl font-bold text-primary-600 mb-1">24/7</div>
-            <div class="text-sm md:text-base text-slate-500">זמינות</div>
+            <div class="text-3xl md:text-4xl font-bold text-primary-600 mb-1">❤️</div>
+            <div class="text-sm md:text-base text-slate-500">ליווי אישי</div>
           </div>
         </div>
       </div>
@@ -236,102 +206,79 @@ export function renderApp(config: Config): string {
     <section id="contact" class="py-14 md:py-24 bg-gradient-to-b from-slate-50/50 to-white">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
         <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-800 mb-3">
-          רוצים לדעת מה מצב הפנסיה שלכם?
+          3 פנסיות מעבודות שונות? בואו נעשה סדר
         </h2>
         <p class="text-slate-500 text-base md:text-lg mb-8 md:mb-10 max-w-xl mx-auto">
-          פגישת ייעוץ ראשונית ללא עלות - נבדוק יחד את המצב הקיים ונמצא הזדמנויות לשיפור
+          שיחת מיפוי ראשונית ללא עלות - נבדוק יחד מה יש לכם, מה חסר, ואיפה אפשר לשפר
         </p>
 
-        <!-- Main CTA - WhatsApp -->
-        <a
-          href="https://wa.me/${config.contact.whatsapp}?text=${encodeURIComponent('היי לוסיה, אשמח לקבוע פגישת ייעוץ')}"
-          class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-green-500 hover:bg-green-600 text-white rounded-2xl font-semibold text-lg transition-all duration-300 shadow-lg shadow-green-500/30 hover:shadow-xl hover:shadow-green-500/40 mb-6"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          קבעו פגישת ייעוץ חינם
-        </a>
+        <!-- Contact Form -->
+        <div class="max-w-md mx-auto mb-8 bg-white rounded-2xl shadow-lg p-6 border border-slate-100">
+          <div class="flex items-center justify-center gap-2 mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <h3 class="text-lg font-semibold text-slate-800">לתיאום שיחה</h3>
+          </div>
+          <p class="text-slate-500 text-sm mb-4 text-center">מלאו את הפרטים - ייפתח וואטסאפ מוכן לשליחה</p>
+          <form id="contact-form" class="flex flex-col gap-3">
+            <input
+              type="text"
+              name="name"
+              id="form-name"
+              placeholder="שם מלא"
+              required
+              class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all text-right"
+            />
+            <input
+              type="tel"
+              name="phone"
+              id="form-phone"
+              placeholder="טלפון"
+              required
+              class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all text-right"
+            />
+            <textarea
+              name="message"
+              id="form-message"
+              placeholder="במה אוכל לעזור? (אופציונלי)"
+              rows="2"
+              class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all resize-none text-right"
+            ></textarea>
+            <button
+              type="submit"
+              class="w-full px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-2"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              שלחו לי בוואטסאפ
+            </button>
+          </form>
+        </div>
 
-        <!-- Secondary options -->
-        <div class="flex flex-wrap justify-center gap-4 text-sm">
-          <a
-            href="tel:${config.contact.phone}"
-            class="inline-flex items-center gap-2 text-slate-600 hover:text-primary-600 transition-colors"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            ${config.contact.phone}
-          </a>
-          <span class="text-slate-300">|</span>
-          <a
-            href="mailto:${config.contact.email}"
-            class="inline-flex items-center gap-2 text-slate-600 hover:text-primary-600 transition-colors"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-            ${config.contact.email}
-          </a>
-          <span class="text-slate-300">|</span>
+        <!-- Social proof -->
+        <p class="text-slate-400 text-sm">
+          עוקבים אחרי בתוכן פיננסי?
           <a
             href="https://instagram.com/lusia_ins"
-            class="inline-flex items-center gap-2 text-slate-600 hover:text-pink-600 transition-colors"
+            class="text-primary-500 hover:text-primary-400 transition-colors font-medium"
             target="_blank"
             rel="noopener noreferrer"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-            @lusia_ins
-          </a>
-        </div>
+          >@lusia_ins</a>
+        </p>
       </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer-dark">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6">
-        <!-- Main Footer Content -->
-        <div class="text-center pb-8 md:pb-10">
-          <!-- Logo on light background -->
-          <div class="inline-block bg-white/95 rounded-2xl px-6 py-4 mb-6">
-            <img
-              src="/logo/13-01.svg"
-              alt="${config.profile.name} - לוגו"
-              class="h-14 sm:h-16 md:h-20 w-auto"
-            />
-          </div>
-          <p class="text-slate-400 text-sm sm:text-base mb-6">${config.profile.bio}</p>
-
-          <!-- Social Links -->
-          <div class="flex justify-center gap-3 mb-8">
-            ${config.socialLinks.map(social => `
-              <a
-                href="${social.url}"
-                class="w-11 h-11 rounded-xl bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-400 hover:text-white transition-all duration-200"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="${social.platform}"
-              >
-                ${getSocialIcon(social.platform)}
-              </a>
-            `).join('')}
-          </div>
-
-          <!-- Contact Links -->
-          <div class="flex flex-wrap justify-center gap-4 sm:gap-6 text-sm">
-            <a href="tel:${config.contact.phone}" class="text-slate-400 hover:text-white transition-colors">
-              ${config.contact.phone}
-            </a>
-            <span class="text-slate-700 hidden sm:inline">|</span>
-            <a href="mailto:${config.contact.email}" class="text-slate-400 hover:text-white transition-colors">
-              ${config.contact.email}
-            </a>
-          </div>
-        </div>
-
-        <!-- Bottom Bar -->
-        <div class="border-t border-slate-800 pt-6 text-center">
-          <p class="text-xs sm:text-sm text-slate-600">
-            &copy; ${new Date().getFullYear()} ${config.profile.name}. כל הזכויות שמורות.
-          </p>
-        </div>
+    <footer class="bg-slate-900 text-white py-4">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+        <p class="text-white text-sm mb-2">
+          ${config.profile.name} | ${config.profile.title}
+        </p>
+        <p class="text-xs text-white/70">
+          <a href="/privacy" class="hover:text-white transition-colors">מדיניות פרטיות</a>
+          <span class="mx-2">|</span>
+          <a href="/terms" class="hover:text-white transition-colors">תקנון</a>
+          <span class="mx-2">|</span>
+          <span>&copy; ${new Date().getFullYear()}</span>
+        </p>
       </div>
     </footer>
   `;
@@ -350,13 +297,3 @@ function getServiceIcon(icon: string): string {
   return icons[icon] || icons.shield;
 }
 
-function getSocialIcon(platform: string): string {
-  const icons: Record<string, string> = {
-    facebook: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>',
-    instagram: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>',
-    linkedin: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>',
-    whatsapp: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>',
-    youtube: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>',
-  };
-  return icons[platform] || '';
-}

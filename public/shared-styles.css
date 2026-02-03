@@ -1,0 +1,122 @@
+/* Shared Styles for all pages - LUC Insurance */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Heebo', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #f8fafc;
+  color: #334155;
+  line-height: 1.7;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* Header - matching main site */
+header {
+  background: linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0.8), transparent);
+  backdrop-filter: blur(4px);
+  padding: 0.75rem 0;
+  margin-bottom: 0;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.logo { height: 80px; }
+
+.back-link {
+  color: #475569;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.back-link:hover { color: #0ea5e9; }
+
+/* Typography */
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 1rem;
+}
+
+.last-updated {
+  color: #64748b;
+  font-size: 0.875rem;
+  margin-bottom: 2rem;
+}
+
+/* Content Card */
+.content {
+  background: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+h2:first-child { margin-top: 0; }
+
+p { margin-bottom: 1rem; }
+
+ul {
+  margin-bottom: 1rem;
+  padding-right: 1.5rem;
+}
+
+li { margin-bottom: 0.5rem; }
+
+/* Highlight boxes */
+.highlight {
+  background: #f0f9ff;
+  border-right: 4px solid #0ea5e9;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+.highlight-warning {
+  background: #fef3c7;
+  border-right: 4px solid #f59e0b;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+.highlight-error {
+  background: #fef2f2;
+  border-right: 4px solid #ef4444;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+/* Links */
+a { color: #0ea5e9; }
