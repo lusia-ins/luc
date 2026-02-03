@@ -81,19 +81,9 @@ export const config: Config = {
   ],
   socialLinks: [
     {
-      platform: "whatsapp",
-      url: "https://wa.me/972532786070",
-      icon: "message-circle",
-    },
-    {
       platform: "instagram",
       url: "https://instagram.com/lusia_ins",
       icon: "instagram",
-    },
-    {
-      platform: "youtube",
-      url: "https://www.youtube.com/@lusia-ins",
-      icon: "youtube",
     },
   ],
   youtubeShorts: [
