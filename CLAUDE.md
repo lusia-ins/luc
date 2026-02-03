@@ -1,5 +1,22 @@
 # LUC - Insurance Agent Landing Page
 
+## Project Accounts & Links
+
+### Vercel (Hosting)
+- **Team**: compumits-projects
+- **Project**: luc-insurance
+- **Production URL**: https://luc-insurance.vercel.app
+- **Dashboard**: https://vercel.com/compumits-projects/luc-insurance
+
+### GitHub
+- **Repository**: My-Agency/LUC
+- **Branch**: main
+
+### Client Info
+- **Name**: לוסיה רחמילוב (Lusia Rachmilov)
+- **Website**: lusia-ins.co.il
+- **YouTube**: @lusia-ins
+
 ## Project Overview
 A modern Linktree-style landing page for an insurance agent. The site is designed to be:
 - Mobile-first and responsive
