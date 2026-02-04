@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
       `TEL;TYPE=CELL:${config.contact.phone.replace(/-/g, '')}`,
       `EMAIL:${config.contact.email}`,
       'URL:https://lusia-ins.co.il',
-      'ADR;TYPE=WORK:;;תל אביב;;;ישראל',
+      'ADR;TYPE=WORK:;;יגאל אלון 155;תל אביב;;6744320;ישראל',
       'END:VCARD'
     ].join('\n');
 
