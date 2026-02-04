@@ -43,8 +43,8 @@ export interface Config {
 export const config: Config = {
   profile: {
     name: "לוסיה רחמילוב",
-    title: "סדר בפנסיה, שקט בראש",
-    bio: "ליווי פיננסי עצמאי לאנשי הייטק - מיפוי מלא, תכנית אחת ברורה",
+    title: "ניהול פיננסי וביטוח",
+    bio: "לא רק פוליסות - שותפות, שקיפות וליווי לאורך זמן",
     image: "/luc1.png",
   },
   contact: {

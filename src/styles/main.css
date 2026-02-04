@@ -254,6 +254,10 @@
     @apply w-[180px] sm:w-[200px] md:w-[220px] flex-shrink-0;
   }
 
+  .short-card-grid {
+    @apply w-full;
+  }
+
   .short-embed-wrapper {
     @apply relative rounded-2xl sm:rounded-3xl overflow-hidden aspect-[9/16] bg-slate-900
            shadow-lg;

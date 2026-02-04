@@ -108,7 +108,7 @@ export function renderApp(config: Config): string {
 
         <!-- Service Links - Linktree Style -->
         <div class="flex flex-col gap-3 sm:gap-4 max-w-2xl mx-auto">
-          ${config.links.map((link) => `
+          ${config.links.filter(link => link.icon !== 'calendar').map((link) => `
             <a
               href="${link.url}"
               class="service-card group"
@@ -125,6 +125,35 @@ export function renderApp(config: Config): string {
               </div>
             </a>
           `).join('')}
+
+          <!-- Trust Indicators - Inline -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-6 mb-4">
+            <div class="trust-item text-center">
+              <div class="text-2xl md:text-3xl font-bold text-primary-600 mb-1">7+</div>
+              <div class="text-xs md:text-sm text-slate-500">שנות ניסיון</div>
+            </div>
+            <div class="trust-item text-center">
+              <div class="text-2xl md:text-3xl font-bold text-primary-600 mb-1">50+</div>
+              <div class="text-xs md:text-sm text-slate-500">לקוחות מרוצים</div>
+            </div>
+            <div class="trust-item text-center">
+              <div class="text-2xl md:text-3xl font-bold text-primary-600 mb-1">100%</div>
+              <div class="text-xs md:text-sm text-slate-500">שקיפות מלאה</div>
+            </div>
+            <div class="trust-item text-center">
+              <div class="text-2xl md:text-3xl font-bold text-primary-600 mb-1">❤️</div>
+              <div class="text-xs md:text-sm text-slate-500">ליווי אישי</div>
+            </div>
+          </div>
+
+          <!-- CTA Button for Appointment -->
+          <a
+            href="#contact"
+            class="mt-2 py-4 px-6 bg-primary-600 hover:bg-primary-700 text-white text-center rounded-2xl font-bold text-lg shadow-lg shadow-primary-600/30 hover:shadow-xl hover:shadow-primary-600/40 transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-3"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+            קביעת פגישת ייעוץ
+          </a>
         </div>
       </div>
     </section>
@@ -133,70 +162,91 @@ export function renderApp(config: Config): string {
     <section id="shorts" class="py-14 md:py-24 bg-white">
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="text-center mb-8 md:mb-12">
-          <span class="inline-block px-4 py-1.5 bg-red-50 text-red-600 text-sm font-medium rounded-full mb-4">
-            תוכן וידאו
-          </span>
-          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-800 mb-3">
-            טיפים בסרטונים קצרים
-          </h2>
-          <p class="text-slate-500 text-base md:text-lg max-w-xl mx-auto">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-800">
             ידע פיננסי שיעזור לכם לקבל החלטות חכמות יותר
-          </p>
+          </h2>
         </div>
 
-        <!-- Shorts Carousel -->
-        <div class="shorts-carousel-container relative">
-          <div class="shorts-carousel flex gap-4 md:gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
-            ${config.youtubeShorts.map((short) => `
-              <div class="short-card group snap-start flex-shrink-0">
-                <div class="short-embed-wrapper">
-                  <iframe
-                    src="https://www.youtube.com/embed/${short.id}?loop=1&playlist=${short.id}"
-                    title="${short.title}"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                    loading="lazy"
-                    class="short-iframe"
-                  ></iframe>
-                </div>
-                <div class="short-info">
-                  <h3 class="short-title">${short.title}</h3>
-                </div>
+        <!-- Shorts Grid 4x2 -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          ${config.youtubeShorts.map((short) => `
+            <div class="short-card-grid">
+              <div class="short-embed-wrapper">
+                <iframe
+                  src="https://www.youtube.com/embed/${short.id}?loop=1&playlist=${short.id}"
+                  title="${short.title}"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  loading="lazy"
+                  class="short-iframe"
+                ></iframe>
               </div>
-            `).join('')}
-          </div>
-
-          <!-- Scroll hint for mobile -->
-          <div class="shorts-scroll-hint md:hidden">
-            <span class="text-slate-400 text-sm flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-              גלול לעוד סרטונים
-            </span>
-          </div>
+              <div class="short-info">
+                <h3 class="short-title">${short.title}</h3>
+              </div>
+            </div>
+          `).join('')}
         </div>
       </div>
     </section>
 
-    <!-- Trust Indicators -->
-    <section class="py-12 md:py-16 bg-slate-50/70">
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-14 md:py-24 bg-slate-50/70">
       <div class="max-w-4xl mx-auto px-4 sm:px-6">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 text-center">
-          <div class="trust-item">
-            <div class="text-3xl md:text-4xl font-bold text-primary-600 mb-1">7+</div>
-            <div class="text-sm md:text-base text-slate-500">שנות ניסיון</div>
+        <div class="text-center mb-8 md:mb-12">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-800 mb-3">
+            מה אומרים הלקוחות
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Testimonial 1 -->
+          <div class="bg-white rounded-2xl p-6 shadow-md border border-slate-100">
+            <div class="flex items-center gap-4 mb-4">
+              <img
+                src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face"
+                alt="קטיה"
+                class="w-14 h-14 rounded-full object-cover"
+              />
+              <div>
+                <h4 class="font-semibold text-slate-800">קטיה מחולון</h4>
+                <div class="flex text-yellow-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+              </div>
+            </div>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              <span class="font-semibold text-primary-600">ממליצה בחום!</span> מרגיע לדעת שיש בן אדם כמו לוסיה לצדך. הקרנות פנסיה שלי היו מפוזרות בהמון חברות לאורך השנים, לוסיה מצאה וחיברה את כולם לאחד. לא צריך לשבור את הראש או לחכות שעות בשיחות המתנה. מקצועית, אמינה, מהירה - הכל מתבצע בצורה הכי טובה שיש!
+            </p>
           </div>
-          <div class="trust-item">
-            <div class="text-3xl md:text-4xl font-bold text-primary-600 mb-1">50+</div>
-            <div class="text-sm md:text-base text-slate-500">לקוחות מרוצים</div>
-          </div>
-          <div class="trust-item">
-            <div class="text-3xl md:text-4xl font-bold text-primary-600 mb-1">100%</div>
-            <div class="text-sm md:text-base text-slate-500">שקיפות מלאה</div>
-          </div>
-          <div class="trust-item">
-            <div class="text-3xl md:text-4xl font-bold text-primary-600 mb-1">❤️</div>
-            <div class="text-sm md:text-base text-slate-500">ליווי אישי</div>
+
+          <!-- Testimonial 2 -->
+          <div class="bg-white rounded-2xl p-6 shadow-md border border-slate-100">
+            <div class="flex items-center gap-4 mb-4">
+              <img
+                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
+                alt="אלונה"
+                class="w-14 h-14 rounded-full object-cover"
+              />
+              <div>
+                <h4 class="font-semibold text-slate-800">אלונה מנתניה</h4>
+                <div class="flex text-yellow-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+              </div>
+            </div>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              ברצוני להמליץ על <span class="font-semibold text-primary-600">לוסיה האלופה!</span> לוסיה מלווה אותי מזה מספר שנים בכל הקשור לעניין הביטוחים. אני זוכה ליחס אישי, מקצועי, הסבר מפורט בכל נושא הביטוח ומעבר. אם אתם מחפשים ליווי אישי יד ביד - ללא ספק אתם יכולים לסמוך על לוסיה, ממליצה מאוד!
+            </p>
           </div>
         </div>
       </div>
