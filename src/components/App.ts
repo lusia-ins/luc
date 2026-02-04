@@ -70,21 +70,7 @@ export function renderApp(config: Config): string {
               class="w-48 h-48 mx-auto"
             />
           </div>
-          <p class="text-slate-600 text-sm mt-4 mb-2">סרקו כדי להוסיף לאנשי קשר</p>
-          <div class="flex flex-col gap-2 mt-4">
-            <a
-              href="tel:${config.contact.phone.replace(/-/g, '')}"
-              class="text-primary-600 hover:text-primary-700 text-sm font-medium"
-            >
-              ${config.contact.phone}
-            </a>
-            <a
-              href="mailto:${config.contact.email}"
-              class="text-primary-600 hover:text-primary-700 text-sm font-medium"
-            >
-              ${config.contact.email}
-            </a>
-          </div>
+          <p class="text-slate-600 text-sm mt-4">סרקו כדי להוסיף לאנשי קשר</p>
         </div>
       </div>
     </div>
