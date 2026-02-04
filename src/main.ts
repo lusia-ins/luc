@@ -51,4 +51,52 @@ document.addEventListener('DOMContentLoaded', () => {
       window.open(whatsappUrl, '_blank');
     });
   }
+
+  // QR Code Modal
+  const qrButton = document.getElementById('qr-button');
+  const qrModal = document.getElementById('qr-modal');
+  const qrModalClose = document.getElementById('qr-modal-close');
+  const qrModalBackdrop = document.getElementById('qr-modal-backdrop');
+  const qrCodeImg = document.getElementById('qr-code-img') as HTMLImageElement;
+
+  if (qrButton && qrModal && qrCodeImg) {
+    // Generate vCard string
+    const vCard = [
+      'BEGIN:VCARD',
+      'VERSION:3.0',
+      `FN:${config.profile.name}`,
+      `N:רחמילוב;לוסיה;;;`,
+      `ORG:${config.profile.title}`,
+      `TEL;TYPE=CELL:${config.contact.phone.replace(/-/g, '')}`,
+      `EMAIL:${config.contact.email}`,
+      'URL:https://lusia-ins.co.il',
+      'ADR;TYPE=WORK:;;תל אביב;;;ישראל',
+      'END:VCARD'
+    ].join('\n');
+
+    // Generate QR code URL using QR Server API
+    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(vCard)}&format=svg`;
+    qrCodeImg.src = qrUrl;
+
+    const openModal = () => {
+      qrModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeModal = () => {
+      qrModal.classList.add('hidden');
+      document.body.style.overflow = '';
+    };
+
+    qrButton.addEventListener('click', openModal);
+    qrModalClose?.addEventListener('click', closeModal);
+    qrModalBackdrop?.addEventListener('click', closeModal);
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !qrModal.classList.contains('hidden')) {
+        closeModal();
+      }
+    });
+  }
 });

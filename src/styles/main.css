@@ -283,6 +283,36 @@
   .shorts-scroll-hint span {
     @apply inline-flex items-center gap-1.5 text-xs text-slate-400;
   }
+
+  /* QR Code Modal */
+  .qr-modal {
+    @apply fixed inset-0 z-[100] flex items-center justify-center p-4;
+  }
+
+  .qr-modal.hidden {
+    display: none;
+  }
+
+  .qr-modal-backdrop {
+    @apply absolute inset-0 bg-black/60 backdrop-blur-sm;
+  }
+
+  .qr-modal-content {
+    @apply relative bg-white rounded-3xl p-6 sm:p-8 max-w-sm w-full
+           shadow-2xl animate-scale-in;
+  }
+
+  .qr-modal-close {
+    @apply absolute top-4 left-4 w-10 h-10 rounded-full
+           bg-slate-100 hover:bg-slate-200
+           flex items-center justify-center
+           text-slate-500 hover:text-slate-700
+           transition-all duration-200;
+  }
+
+  .qr-code-wrapper {
+    @apply bg-white p-4 rounded-2xl border-2 border-slate-100 inline-block;
+  }
 }
 
 /* Utility Classes */

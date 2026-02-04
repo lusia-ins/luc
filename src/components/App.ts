@@ -42,6 +42,51 @@ export function renderApp(config: Config): string {
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
       </a>
+      <button
+        id="qr-button"
+        class="side-button bg-purple-600 text-white"
+        title="כרטיס ביקור דיגיטלי"
+        aria-label="הצג QR לכרטיס ביקור"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="5" height="5" x="3" y="3" rx="1"/><rect width="5" height="5" x="16" y="3" rx="1"/><rect width="5" height="5" x="3" y="16" rx="1"/><path d="M21 16h-3a2 2 0 0 0-2 2v3"/><path d="M21 21v.01"/><path d="M12 7v3a2 2 0 0 1-2 2H7"/><path d="M3 12h.01"/><path d="M12 3h.01"/><path d="M12 16v.01"/><path d="M16 12h1"/><path d="M21 12v.01"/><path d="M12 21v-1"/></svg>
+      </button>
+    </div>
+
+    <!-- QR Code Modal -->
+    <div id="qr-modal" class="qr-modal hidden">
+      <div class="qr-modal-backdrop" id="qr-modal-backdrop"></div>
+      <div class="qr-modal-content">
+        <button id="qr-modal-close" class="qr-modal-close" aria-label="סגור">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+        <div class="text-center">
+          <h3 class="text-xl font-bold text-slate-800 mb-2">${config.profile.name}</h3>
+          <p class="text-slate-500 text-sm mb-4">${config.profile.title}</p>
+          <div class="qr-code-wrapper">
+            <img
+              id="qr-code-img"
+              src=""
+              alt="QR Code - כרטיס ביקור"
+              class="w-48 h-48 mx-auto"
+            />
+          </div>
+          <p class="text-slate-600 text-sm mt-4 mb-2">סרקו כדי להוסיף לאנשי קשר</p>
+          <div class="flex flex-col gap-2 mt-4">
+            <a
+              href="tel:${config.contact.phone.replace(/-/g, '')}"
+              class="text-primary-600 hover:text-primary-700 text-sm font-medium"
+            >
+              ${config.contact.phone}
+            </a>
+            <a
+              href="mailto:${config.contact.email}"
+              class="text-primary-600 hover:text-primary-700 text-sm font-medium"
+            >
+              ${config.contact.email}
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
 
 

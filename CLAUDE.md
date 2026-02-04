@@ -1,15 +1,37 @@
 # LUC - Insurance Agent Landing Page
 
+## ⚠️ CRITICAL: Account Separation Rules
+
+**This project uses ONLY the `lusia-ins` GitHub and Vercel accounts.**
+
+### BEFORE ANY GIT OPERATION:
+```bash
+# Always verify and switch to the correct account
+gh auth status
+gh auth switch --user lusia-ins
+```
+
+### FORBIDDEN ACCOUNTS - NEVER USE:
+- ❌ `enteroiq` - This is a separate startup project, completely unrelated
+- ❌ `compumit` / `compumits-projects` - Different business entity
+
+### If you see permission errors or wrong account:
+1. Run `gh auth switch --user lusia-ins`
+2. Verify with `gh auth status`
+3. Then proceed with git operations
+
+---
+
 ## Project Accounts & Links
 
 ### Vercel (Hosting)
-- **Team**: compumits-projects
+- **Account**: lusia-ins (independent account)
 - **Project**: luc-insurance
 - **Production URL**: https://luc-insurance.vercel.app
-- **Dashboard**: https://vercel.com/compumits-projects/luc-insurance
 
 ### GitHub
-- **Repository**: My-Agency/LUC
+- **Account**: lusia-ins
+- **Repository**: lusia-ins/luc
 - **Branch**: main
 
 ### Client Info
