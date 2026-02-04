@@ -313,6 +313,67 @@
   .qr-code-wrapper {
     @apply bg-white p-4 rounded-2xl border-2 border-slate-100 inline-block;
   }
+
+  /* Cookie Consent Banner */
+  .cookie-banner {
+    @apply fixed bottom-0 left-0 right-0 z-[90]
+           bg-white/95 backdrop-blur-md
+           border-t border-slate-200
+           shadow-[0_-4px_20px_rgba(0,0,0,0.1)]
+           p-3 sm:p-4 md:p-5
+           animate-slide-up;
+    padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
+  }
+
+  @media (min-width: 640px) {
+    .cookie-banner {
+      padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+    }
+  }
+
+  .cookie-banner.hidden {
+    display: none;
+  }
+
+  .cookie-banner-content {
+    @apply max-w-4xl mx-auto
+           flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4;
+  }
+
+  .cookie-banner-text {
+    @apply flex items-start sm:items-center gap-2 sm:gap-3
+           text-slate-600 text-xs sm:text-sm md:text-base text-right
+           leading-relaxed;
+  }
+
+  .cookie-icon {
+    @apply w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-primary-500 flex-shrink-0 mt-0.5 sm:mt-0;
+  }
+
+  .cookie-link {
+    @apply text-primary-600 hover:text-primary-700 underline underline-offset-2 font-medium
+           whitespace-nowrap;
+  }
+
+  .cookie-banner-buttons {
+    @apply flex gap-2 sm:gap-3 flex-shrink-0 w-full sm:w-auto;
+  }
+
+  .cookie-btn {
+    @apply px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl font-semibold text-xs sm:text-sm
+           transition-all duration-200
+           flex-1 sm:flex-none sm:min-w-[90px];
+  }
+
+  .cookie-btn-accept {
+    @apply bg-primary-600 hover:bg-primary-700 text-white
+           shadow-md shadow-primary-600/20 hover:shadow-lg hover:shadow-primary-600/30;
+  }
+
+  .cookie-btn-decline {
+    @apply bg-slate-100 hover:bg-slate-200 text-slate-600
+           border border-slate-200;
+  }
 }
 
 /* Utility Classes */
@@ -374,6 +435,21 @@
     opacity: 1;
     transform: scale(1);
   }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.4s ease-out forwards;
 }
 
 @keyframes bounce {

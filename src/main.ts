@@ -99,4 +99,63 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // Cookie Consent Banner
+  const cookieBanner = document.getElementById('cookie-banner');
+  const cookieAccept = document.getElementById('cookie-accept');
+  const cookieDecline = document.getElementById('cookie-decline');
+
+  if (cookieBanner && cookieAccept && cookieDecline) {
+    const COOKIE_CONSENT_KEY = 'lusia_cookie_consent';
+
+    // Check if user already made a choice
+    const existingConsent = localStorage.getItem(COOKIE_CONSENT_KEY);
+
+    if (!existingConsent) {
+      // Show banner after a short delay for better UX
+      setTimeout(() => {
+        cookieBanner.classList.remove('hidden');
+      }, 1500);
+    } else if (existingConsent === 'accepted') {
+      // Enable analytics if previously accepted
+      enableAnalytics();
+    }
+
+    cookieAccept.addEventListener('click', () => {
+      localStorage.setItem(COOKIE_CONSENT_KEY, 'accepted');
+      cookieBanner.classList.add('hidden');
+      enableAnalytics();
+    });
+
+    cookieDecline.addEventListener('click', () => {
+      localStorage.setItem(COOKIE_CONSENT_KEY, 'declined');
+      cookieBanner.classList.add('hidden');
+      disableAnalytics();
+    });
+  }
 });
+
+// Analytics functions
+function enableAnalytics() {
+  // Google Analytics
+  if (typeof window.gtag === 'function') {
+    window.gtag('consent', 'update', {
+      analytics_storage: 'granted'
+    });
+  }
+
+  // Microsoft Clarity - load only after consent
+  if (typeof window.loadClarity === 'function') {
+    window.loadClarity();
+  }
+}
+
+function disableAnalytics() {
+  // Google Analytics - update consent
+  if (typeof window.gtag === 'function') {
+    window.gtag('consent', 'update', {
+      analytics_storage: 'denied'
+    });
+  }
+  // Clarity was never loaded if user declined, so nothing to disable
+}

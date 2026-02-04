@@ -372,6 +372,27 @@ export function renderApp(config: Config): string {
         </p>
       </div>
     </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-banner hidden">
+      <div class="cookie-banner-content">
+        <div class="cookie-banner-text">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cookie-icon"><circle cx="12" cy="12" r="10"/><path d="M9.5 9.5c.336-.187.67-.312 1-.375.645-.128 1.226 0 1.5.375.276.378.276.878 0 1.5-.138.31-.444.689-.888 1.062C10.5 12.625 10 13.5 10 14.5"/><circle cx="10" cy="17" r=".5" fill="currentColor"/><circle cx="7" cy="10" r="1" fill="currentColor"/><circle cx="15" cy="8" r="1" fill="currentColor"/><circle cx="16" cy="14" r="1" fill="currentColor"/></svg>
+          <p>
+            כדי להעניק לך את השירות הטוב ביותר, האתר משתמש בעוגיות.
+            <a href="/privacy" class="cookie-link">מדיניות פרטיות</a>
+          </p>
+        </div>
+        <div class="cookie-banner-buttons">
+          <button id="cookie-accept" class="cookie-btn cookie-btn-accept">
+            מאשר/ת
+          </button>
+          <button id="cookie-decline" class="cookie-btn cookie-btn-decline">
+            לא תודה
+          </button>
+        </div>
+      </div>
+    </div>
   `;
 }
 
