@@ -244,6 +244,41 @@ export function renderApp(config: Config): string {
       </div>
     </section>
 
+    <!-- About Section -->
+    <section id="about" class="py-14 md:py-24 bg-gradient-to-b from-white to-slate-50/50">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+          <!-- Profile Image -->
+          <div class="flex-shrink-0">
+            <img
+              src="/lusia-profile.png"
+              alt="${config.profile.name}"
+              class="w-52 h-52 md:w-64 md:h-64 rounded-3xl object-cover shadow-xl border-4 border-white"
+            />
+          </div>
+          <!-- Text Content -->
+          <div class="text-center md:text-right">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-800 mb-4">
+              הכירו את לוסיה
+            </h2>
+            <p class="text-slate-600 text-base md:text-lg leading-relaxed mb-4">
+              בעלת רישיון סוכן ביטוח פנסיוני מטעם רשות שוק ההון, ביטוח וחיסכון. עובדת מול רוב השוק ברישיון משרד האוצר.
+            </p>
+            <p class="text-slate-600 text-base md:text-lg leading-relaxed mb-4">
+              מלווה לקוחות פרטיים, עצמאיים ומעסיקים בכל תחומי הביטוח, הפנסיה והחיסכון — עם אחריות אישית על כל תיק, שקיפות מלאה ומעקב שוטף.
+            </p>
+            <p class="text-slate-600 text-base md:text-lg leading-relaxed mb-6">
+              השירות ניתן בהתאמה אישית מלאה — בהתאם למצב המשפחתי, התעסוקתי והבריאותי של כל לקוח. כי אין שני תיקים זהים, ואין פתרונות מדף.
+            </p>
+            <a href="#contact" class="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-semibold transition-colors">
+              <span>בואו נדבר</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Testimonials Section -->
     <section id="testimonials" class="py-14 md:py-24 bg-slate-50/70">
       <div class="max-w-4xl mx-auto px-4 sm:px-6">
