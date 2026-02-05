@@ -185,7 +185,7 @@ export function renderApp(config: Config): string {
               <div class="text-xs md:text-sm text-slate-500">שקיפות מלאה</div>
             </div>
             <div class="trust-item text-center">
-              <div class="text-2xl md:text-3xl font-bold text-primary-600 mb-1">A-Z</div>
+              <div class="text-2xl md:text-3xl font-bold text-primary-600 mb-1">א-ת</div>
               <div class="text-xs md:text-sm text-slate-500">מעטפת שירות מלאה</div>
             </div>
             <div class="trust-item text-center">
