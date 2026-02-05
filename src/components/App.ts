@@ -2,8 +2,13 @@ import { Config } from '../data/config';
 
 export function renderApp(config: Config): string {
   return `
+    <!-- Skip to Content - Accessibility -->
+    <a href="#about" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:right-4 focus:z-[200] focus:bg-primary-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg">
+      דלג לתוכן הראשי
+    </a>
+
     <!-- Fixed Side Contact Buttons - All Screens (Right side for RTL) -->
-    <div id="sidebar" class="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex flex-col shadow-lg rounded-l-lg overflow-hidden">
+    <nav id="sidebar" aria-label="תפריט ניווט צדדי" class="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex flex-col shadow-lg rounded-l-lg overflow-hidden">
       <a
         href="#contact"
         class="side-button bg-slate-800 text-white"
@@ -50,17 +55,17 @@ export function renderApp(config: Config): string {
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="5" height="5" x="3" y="3" rx="1"/><rect width="5" height="5" x="16" y="3" rx="1"/><rect width="5" height="5" x="3" y="16" rx="1"/><path d="M21 16h-3a2 2 0 0 0-2 2v3"/><path d="M21 21v.01"/><path d="M12 7v3a2 2 0 0 1-2 2H7"/><path d="M3 12h.01"/><path d="M12 3h.01"/><path d="M12 16v.01"/><path d="M16 12h1"/><path d="M21 12v.01"/><path d="M12 21v-1"/></svg>
       </button>
-    </div>
+    </nav>
 
     <!-- QR Code Modal -->
-    <div id="qr-modal" class="qr-modal hidden">
+    <div id="qr-modal" class="qr-modal hidden" role="dialog" aria-modal="true" aria-labelledby="qr-modal-title">
       <div class="qr-modal-backdrop" id="qr-modal-backdrop"></div>
       <div class="qr-modal-content">
         <button id="qr-modal-close" class="qr-modal-close" aria-label="סגור">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
         </button>
         <div class="text-center">
-          <h3 class="text-xl font-bold text-slate-800 mb-2">${config.profile.name}</h3>
+          <h3 id="qr-modal-title" class="text-xl font-bold text-slate-800 mb-2">${config.profile.name}</h3>
           <p class="text-slate-500 text-sm mb-4">${config.profile.title}</p>
           <div class="qr-code-wrapper">
             <img
@@ -80,12 +85,17 @@ export function renderApp(config: Config): string {
     <section class="hero-section relative min-h-[100svh] flex flex-col overflow-hidden">
       <!-- Background Image -->
       <div class="absolute inset-0">
-        <img
-          src="/luc1.png"
-          alt="לוסיה רחמילוב - יועצת ביטוח"
-          class="w-full h-full object-cover object-[55%_center] md:object-center"
-          loading="eager"
-        />
+        <picture>
+          <source srcset="/luc1.webp" type="image/webp" />
+          <img
+            src="/luc1.png"
+            alt="לוסיה רחמילוב - סוכנת ביטוח פנסיוני, פיננסי ותכנון פרישה"
+            class="w-full h-full object-cover object-[55%_center] md:object-center"
+            loading="eager"
+            width="1536"
+            height="1024"
+          />
+        </picture>
         <!-- Gradient Overlay - Optimized for text readability -->
         <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-slate-900/90 via-slate-900/60 to-slate-900/30 md:from-slate-900/80 md:via-slate-900/50 md:to-transparent"></div>
       </div>
@@ -95,7 +105,7 @@ export function renderApp(config: Config): string {
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2 sm:py-3 flex justify-start">
           <img
             src="/logo/logo-cropped.svg"
-            alt="${config.profile.name}"
+            alt="${config.profile.name} - לוגו"
             class="h-20 sm:h-28 md:h-36 lg:h-40 w-auto"
           />
         </div>
@@ -132,8 +142,50 @@ export function renderApp(config: Config): string {
       </div>
     </section>
 
+    <!-- About Section -->
+    <section id="about" class="py-14 md:py-24 bg-gradient-to-b from-white to-slate-50/50">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+          <!-- Profile Image -->
+          <div class="flex-shrink-0">
+            <picture>
+              <source srcset="/lusia-profile.webp" type="image/webp" />
+              <img
+                src="/lusia-profile.png"
+                alt="תמונת פרופיל של ${config.profile.name} - סוכנת ביטוח פנסיוני"
+                class="w-52 h-52 md:w-64 md:h-64 rounded-3xl object-cover shadow-xl border-4 border-white"
+                width="512"
+                height="512"
+                loading="lazy"
+              />
+            </picture>
+          </div>
+          <!-- Text Content -->
+          <div class="text-center md:text-right">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-800 mb-2">
+              אז מי מאחורי כל זה?
+            </h2>
+            <p class="text-primary-600 font-medium text-base md:text-lg mb-4">טוב, אספר על עצמי בקצרה.</p>
+            <p class="text-slate-600 text-base md:text-lg leading-relaxed mb-4">
+              קוראים לי לוסיה, ואני מלווה לקוחות פרטיים, עצמאיים ומעסיקים בכל מה שקשור לפנסיה, ביטוח וחיסכון. עם רישיון סוכן ביטוח פנסיוני מטעם רשות שוק ההון ומול רוב חברות השוק.
+            </p>
+            <p class="text-slate-600 text-base md:text-lg leading-relaxed mb-4">
+              אני מאמינה שכל תיק הוא סיפור אישי — אין פתרונות מדף. לכן כל לקוח מקבל מעטפת שירות מלאה, מעקב שוטף, ושקיפות מוחלטת. בלי אותיות קטנות.
+            </p>
+            <p class="text-slate-600 text-base md:text-lg leading-relaxed mb-6">
+              אם הגעתם עד לכאן, סימן שמשהו דיבר אליכם. אז בואו נדבר גם אחד על אחד.
+            </p>
+            <a href="#contact" class="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-semibold transition-colors">
+              <span>בואו נדבר</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Services Section -->
-    <section id="services" class="py-14 md:py-24 bg-gradient-to-b from-white to-slate-50/50">
+    <section id="services" class="py-14 md:py-24 bg-white">
       <div class="max-w-4xl mx-auto px-4 sm:px-6">
         <div class="text-center mb-8 md:mb-12">
           <span class="inline-block px-4 py-1.5 bg-primary-50 text-primary-600 text-sm font-medium rounded-full mb-4">
@@ -211,74 +263,6 @@ export function renderApp(config: Config): string {
       </div>
     </section>
 
-    <!-- YouTube Shorts Section -->
-    <section id="shorts" class="py-14 md:py-24 bg-white">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        <div class="text-center mb-8 md:mb-12">
-          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-800">
-            ידע פיננסי שיעזור לכם לקבל החלטות חכמות יותר
-          </h2>
-        </div>
-
-        <!-- Shorts Grid 4x2 -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-          ${config.youtubeShorts.map((short) => `
-            <div class="short-card-grid">
-              <div class="short-embed-wrapper">
-                <iframe
-                  src="https://www.youtube.com/embed/${short.id}?loop=1&playlist=${short.id}"
-                  title="${short.title}"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                  loading="lazy"
-                  class="short-iframe"
-                ></iframe>
-              </div>
-              <div class="short-info">
-                <h3 class="short-title">${short.title}</h3>
-              </div>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-14 md:py-24 bg-gradient-to-b from-white to-slate-50/50">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6">
-        <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-          <!-- Profile Image -->
-          <div class="flex-shrink-0">
-            <img
-              src="/lusia-profile.png"
-              alt="${config.profile.name}"
-              class="w-52 h-52 md:w-64 md:h-64 rounded-3xl object-cover shadow-xl border-4 border-white"
-            />
-          </div>
-          <!-- Text Content -->
-          <div class="text-center md:text-right">
-            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-800 mb-4">
-              הכירו את לוסיה
-            </h2>
-            <p class="text-slate-600 text-base md:text-lg leading-relaxed mb-4">
-              בעלת רישיון סוכן ביטוח פנסיוני מטעם רשות שוק ההון, ביטוח וחיסכון. עובדת מול רוב השוק ברישיון משרד האוצר.
-            </p>
-            <p class="text-slate-600 text-base md:text-lg leading-relaxed mb-4">
-              מלווה לקוחות פרטיים, עצמאיים ומעסיקים בכל תחומי הביטוח, הפנסיה והחיסכון — עם אחריות אישית על כל תיק, שקיפות מלאה ומעקב שוטף.
-            </p>
-            <p class="text-slate-600 text-base md:text-lg leading-relaxed mb-6">
-              השירות ניתן בהתאמה אישית מלאה — בהתאם למצב המשפחתי, התעסוקתי והבריאותי של כל לקוח. כי אין שני תיקים זהים, ואין פתרונות מדף.
-            </p>
-            <a href="#contact" class="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-semibold transition-colors">
-              <span>בואו נדבר</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Testimonials Section -->
     <section id="testimonials" class="py-14 md:py-24 bg-slate-50/70">
       <div class="max-w-4xl mx-auto px-4 sm:px-6">
@@ -294,12 +278,15 @@ export function renderApp(config: Config): string {
             <div class="flex items-center gap-4 mb-4">
               <img
                 src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face"
-                alt="קטיה"
+                alt="תמונת פרופיל של קטיה מחולון - לקוחה ממליצה"
                 class="w-14 h-14 rounded-full object-cover"
+                width="100"
+                height="100"
+                loading="lazy"
               />
               <div>
                 <h4 class="font-semibold text-slate-800">קטיה מחולון</h4>
-                <div class="flex text-yellow-400">
+                <div class="flex text-yellow-400" role="img" aria-label="דירוג 5 מתוך 5 כוכבים">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -318,12 +305,15 @@ export function renderApp(config: Config): string {
             <div class="flex items-center gap-4 mb-4">
               <img
                 src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
-                alt="אלונה"
+                alt="תמונת פרופיל של אלונה מנתניה - לקוחה ממליצה"
                 class="w-14 h-14 rounded-full object-cover"
+                width="100"
+                height="100"
+                loading="lazy"
               />
               <div>
                 <h4 class="font-semibold text-slate-800">אלונה מנתניה</h4>
-                <div class="flex text-yellow-400">
+                <div class="flex text-yellow-400" role="img" aria-label="דירוג 5 מתוך 5 כוכבים">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -360,23 +350,28 @@ export function renderApp(config: Config): string {
             <h3 class="text-lg font-semibold text-slate-800">לתיאום שיחה</h3>
           </div>
           <p class="text-slate-500 text-sm mb-4 text-center">מלאו את הפרטים - ייפתח וואטסאפ מוכן לשליחה</p>
-          <form id="contact-form" class="flex flex-col gap-3">
+          <form id="contact-form" class="flex flex-col gap-3" aria-label="טופס יצירת קשר">
+            <label for="form-name" class="sr-only">שם מלא</label>
             <input
               type="text"
               name="name"
               id="form-name"
               placeholder="שם מלא"
               required
+              autocomplete="name"
               class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all text-right"
             />
+            <label for="form-phone" class="sr-only">טלפון</label>
             <input
               type="tel"
               name="phone"
               id="form-phone"
               placeholder="טלפון"
               required
+              autocomplete="tel"
               class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all text-right"
             />
+            <label for="form-message" class="sr-only">הודעה</label>
             <textarea
               name="message"
               id="form-message"
@@ -407,19 +402,52 @@ export function renderApp(config: Config): string {
       </div>
     </section>
 
+    <!-- YouTube Shorts Section -->
+    <section id="shorts" class="py-14 md:py-24 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-8 md:mb-12">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-800">
+            ידע פיננסי שיעזור לכם לקבל החלטות חכמות יותר
+          </h2>
+        </div>
+
+        <!-- Shorts Grid 4x2 -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          ${config.youtubeShorts.map((short) => `
+            <div class="short-card-grid">
+              <div class="short-embed-wrapper">
+                <iframe
+                  src="https://www.youtube.com/embed/${short.id}?loop=1&playlist=${short.id}"
+                  title="${short.title}"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  loading="lazy"
+                  class="short-iframe"
+                ></iframe>
+              </div>
+              <div class="short-info">
+                <h3 class="short-title">${short.title}</h3>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </section>
+
     <!-- Footer -->
-    <footer class="bg-slate-900 text-white py-4">
+    <footer class="bg-slate-900 text-white py-4" role="contentinfo">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
         <p class="text-white text-sm mb-2">
           ${config.profile.name} | ${config.profile.title}
         </p>
-        <p class="text-xs text-white/70">
+        <nav aria-label="קישורים משפטיים" class="text-xs text-white/70">
           <a href="/privacy" class="hover:text-white transition-colors">מדיניות פרטיות</a>
           <span class="mx-2">|</span>
           <a href="/terms" class="hover:text-white transition-colors">תקנון</a>
           <span class="mx-2">|</span>
           <span>&copy; ${new Date().getFullYear()}</span>
-        </p>
+        </nav>
       </div>
     </footer>
 

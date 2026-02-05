@@ -88,3 +88,13 @@ temp/
 # Environment secrets (keep .env.example for documentation)
 .env*.local
 !.env.example
+
+# Design source files (not needed in production)
+public/logo/*.eps
+public/logo/*.psd
+public/logo/*.ai
+public/logo/*.pdf
+public/logo/13-01.jpg
+public/logo/13-01.png
+public/logo/13-01.svg
+public/logo/logo-optimized.svg
