@@ -189,8 +189,8 @@ export function renderApp(config: Config): string {
               <div class="text-xs md:text-sm text-slate-500">מעטפת שירות מלאה</div>
             </div>
             <div class="trust-item text-center">
-              <div class="text-2xl md:text-3xl font-bold text-primary-600 mb-1">24/7</div>
-              <div class="text-xs md:text-sm text-slate-500">זמינות בוואטסאפ</div>
+              <div class="text-2xl md:text-3xl font-bold text-primary-600 mb-1">1:1</div>
+              <div class="text-xs md:text-sm text-slate-500">ליווי אישי</div>
             </div>
           </div>
 
