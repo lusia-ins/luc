@@ -32,6 +32,29 @@ document.addEventListener('DOMContentLoaded', () => {
     handleScroll(); // Check initial state
   }
 
+  // Service accordions
+  const accordionButtons = document.querySelectorAll('[data-accordion]');
+  accordionButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const index = btn.getAttribute('data-accordion');
+      const panel = document.getElementById(`panel-${index}`);
+      const wrapper = btn.closest('.service-accordion');
+      const isOpen = wrapper?.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('.service-accordion').forEach((el) => el.classList.remove('open'));
+      document.querySelectorAll('.accordion-panel').forEach((el) => el.classList.remove('open'));
+      document.querySelectorAll('[data-accordion]').forEach((el) => el.setAttribute('aria-expanded', 'false'));
+
+      // Toggle current
+      if (!isOpen && panel && wrapper) {
+        wrapper.classList.add('open');
+        panel.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
   // Contact form - send to WhatsApp
   const contactForm = document.getElementById('contact-form') as HTMLFormElement;
   if (contactForm) {

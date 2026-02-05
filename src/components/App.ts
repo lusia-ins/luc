@@ -149,22 +149,27 @@ export function renderApp(config: Config): string {
 
         <!-- Service Links - Linktree Style -->
         <div class="flex flex-col gap-3 sm:gap-4 max-w-2xl mx-auto">
-          ${config.links.map((link) => `
-            <a
-              href="${link.url}"
-              class="service-card group"
-              ${link.url.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}
-            >
-              <div class="service-icon">
-                ${getServiceIcon(link.icon || 'shield')}
+          ${config.links.map((link, index) => `
+            <div class="service-accordion">
+              <button
+                class="service-card group"
+                data-accordion="${index}"
+                aria-expanded="false"
+              >
+                <div class="service-icon">
+                  ${getServiceIcon(link.icon || 'shield')}
+                </div>
+                <div class="service-content">
+                  <h3 class="text-base sm:text-lg font-semibold text-slate-800 group-hover:text-primary-600 transition-colors">${link.title}</h3>
+                </div>
+                <div class="service-arrow mr-auto">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="accordion-chevron transition-transform duration-300"><path d="m6 9 6 6 6-6"/></svg>
+                </div>
+              </button>
+              <div class="accordion-panel" id="panel-${index}">
+                <p class="text-sm text-slate-600 leading-relaxed">${link.description || ''}</p>
               </div>
-              <div class="service-content">
-                <h3 class="text-base sm:text-lg font-semibold text-slate-800 group-hover:text-primary-600 transition-colors">${link.title}</h3>
-              </div>
-              <div class="service-arrow mr-auto">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transform group-hover:-translate-x-1 transition-transform"><path d="m15 18-6-6 6-6"/></svg>
-              </div>
-            </a>
+            </div>
           `).join('')}
 
           <!-- License Badge -->
