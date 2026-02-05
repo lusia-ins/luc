@@ -189,7 +189,7 @@ export function renderApp(config: Config): string {
               <div class="text-xs md:text-sm text-slate-500">מעטפת שירות מלאה</div>
             </div>
             <div class="trust-item text-center">
-              <div class="text-2xl md:text-3xl font-bold text-primary-600 mb-1">1:1</div>
+              <div class="text-2xl md:text-3xl font-bold text-red-500 mb-1">&#10084;</div>
               <div class="text-xs md:text-sm text-slate-500">ליווי אישי</div>
             </div>
           </div>
