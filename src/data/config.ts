@@ -43,8 +43,8 @@ export interface Config {
 export const config: Config = {
   profile: {
     name: "לוסיה רחמילוב",
-    title: "ניהול פיננסי וביטוח",
-    bio: "לא רק פוליסות - שותפות, שקיפות וליווי לאורך זמן",
+    title: "ביטוח פנסיוני, פיננסי ותכנון פרישה",
+    bio: "עושים סדר בפנסיה, בביטוחים ובכסף - בגובה העיניים ובלי אותיות קטנות",
     image: "/luc1.png",
   },
   contact: {
@@ -54,29 +54,29 @@ export const config: Config = {
   },
   links: [
     {
-      title: "ביטוח חיים ריסק",
-      url: "#life-risk",
-      icon: "heart",
-    },
-    {
-      title: "ביטוח חיים עם חיסכון",
-      url: "#life-savings",
+      title: "בדיקת תיק פנסיוני מקיף",
+      url: "#contact",
       icon: "piggy-bank",
     },
     {
-      title: "ביטוח משולב",
-      url: "#combined",
+      title: "תכנון פרישה מלא",
+      url: "#contact",
+      icon: "sunset",
+    },
+    {
+      title: "השלמת תיק ביטוחי",
+      url: "#contact",
       icon: "shield",
     },
     {
-      title: "ביטוח בריאות פרטי",
-      url: "#health",
-      icon: "activity",
+      title: "פתרונות פיננסים וחיסכון",
+      url: "#contact",
+      icon: "wallet",
     },
     {
-      title: "קביעת פגישת ייעוץ",
-      url: "https://wa.me/972532786070?text=היי לוסיה, אשמח לקבוע פגישת ייעוץ",
-      icon: "calendar",
+      title: "ליווי מעסיקים ועובדים",
+      url: "#contact",
+      icon: "users",
     },
   ],
   socialLinks: [

@@ -120,7 +120,7 @@ export function renderApp(config: Config): string {
           <!-- CTA Button -->
           <div class="animate-fade-in-up animation-delay-200">
             <a href="#contact" class="cta-button-hero text-lg px-10 py-4">
-              לשיחת מיפוי פנסיוני
+              לשיחת בדיקה ללא עלות
             </a>
           </div>
         </div>
@@ -149,7 +149,7 @@ export function renderApp(config: Config): string {
 
         <!-- Service Links - Linktree Style -->
         <div class="flex flex-col gap-3 sm:gap-4 max-w-2xl mx-auto">
-          ${config.links.filter(link => link.icon !== 'calendar').map((link) => `
+          ${config.links.map((link) => `
             <a
               href="${link.url}"
               class="service-card group"
@@ -167,23 +167,30 @@ export function renderApp(config: Config): string {
             </a>
           `).join('')}
 
+          <!-- License Badge -->
+          <div class="mt-6 mb-3 p-3 bg-primary-50 border border-primary-100 rounded-xl text-center">
+            <p class="text-xs sm:text-sm text-primary-700 font-medium leading-relaxed">
+              בעלת רישיון סוכן ביטוח פנסיוני מטעם רשות שוק ההון, ביטוח וחיסכון
+            </p>
+          </div>
+
           <!-- Trust Indicators - Inline -->
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-6 mb-4">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-3 mb-4">
             <div class="trust-item text-center">
               <div class="text-2xl md:text-3xl font-bold text-primary-600 mb-1">7+</div>
               <div class="text-xs md:text-sm text-slate-500">שנות ניסיון</div>
-            </div>
-            <div class="trust-item text-center">
-              <div class="text-2xl md:text-3xl font-bold text-primary-600 mb-1">50+</div>
-              <div class="text-xs md:text-sm text-slate-500">לקוחות מרוצים</div>
             </div>
             <div class="trust-item text-center">
               <div class="text-2xl md:text-3xl font-bold text-primary-600 mb-1">100%</div>
               <div class="text-xs md:text-sm text-slate-500">שקיפות מלאה</div>
             </div>
             <div class="trust-item text-center">
-              <div class="text-2xl md:text-3xl font-bold text-primary-600 mb-1">❤️</div>
-              <div class="text-xs md:text-sm text-slate-500">ליווי אישי</div>
+              <div class="text-2xl md:text-3xl font-bold text-primary-600 mb-1">A-Z</div>
+              <div class="text-xs md:text-sm text-slate-500">מעטפת שירות מלאה</div>
+            </div>
+            <div class="trust-item text-center">
+              <div class="text-2xl md:text-3xl font-bold text-primary-600 mb-1">24/7</div>
+              <div class="text-xs md:text-sm text-slate-500">זמינות בוואטסאפ</div>
             </div>
           </div>
 
@@ -193,7 +200,7 @@ export function renderApp(config: Config): string {
             class="mt-2 py-4 px-6 bg-primary-600 hover:bg-primary-700 text-white text-center rounded-2xl font-bold text-lg shadow-lg shadow-primary-600/30 hover:shadow-xl hover:shadow-primary-600/40 transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-3"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
-            קביעת פגישת ייעוץ
+            לתיאום שיחת בדיקה ללא עלות
           </a>
         </div>
       </div>
@@ -297,10 +304,13 @@ export function renderApp(config: Config): string {
     <section id="contact" class="py-14 md:py-24 bg-gradient-to-b from-slate-50/50 to-white">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
         <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-800 mb-3">
-          3 פנסיות מעבודות שונות? בואו נעשה סדר
+          שיחת בדיקה ראשונית - ללא עלות
         </h2>
-        <p class="text-slate-500 text-base md:text-lg mb-8 md:mb-10 max-w-xl mx-auto">
-          שיחת מיפוי ראשונית ללא עלות - נבדוק יחד מה יש לכם, מה חסר, ואיפה אפשר לשפר
+        <p class="text-slate-500 text-base md:text-lg mb-2 max-w-xl mx-auto">
+          נבדוק יחד מה יש לכם, מה חסר, ואיפה אפשר לשפר
+        </p>
+        <p class="text-slate-400 text-sm mb-8 md:mb-10">
+          א'-ה' 09:00-17:00 | מענה בוואטסאפ גם מעבר לשעות הפעילות
         </p>
 
         <!-- Contact Form -->
@@ -405,6 +415,9 @@ function getServiceIcon(icon: string): string {
     'piggy-bank': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h4v-2h3v2h4v-4c1-.5 1.7-1 2-2h2v-4h-2c0-1-.5-1.5-1-2V5z"/><path d="M2 9v1c0 1.1.9 2 2 2h1"/><path d="M16 11h.01"/></svg>',
     calendar: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>',
     shield: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+    sunset: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 10V2"/><path d="m4.93 10.93 1.41 1.41"/><path d="M2 18h2"/><path d="M20 18h2"/><path d="m19.07 10.93-1.41 1.41"/><path d="M22 22H2"/><path d="m8 6 4-4 4 4"/><path d="M16 18a4 4 0 0 0-8 0"/></svg>',
+    wallet: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>',
+    users: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
   };
   return icons[icon] || icons.shield;
 }
