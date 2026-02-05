@@ -142,50 +142,8 @@ export function renderApp(config: Config): string {
       </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-14 md:py-24 bg-gradient-to-b from-white to-slate-50/50">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6">
-        <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-          <!-- Profile Image -->
-          <div class="flex-shrink-0">
-            <picture>
-              <source srcset="/lusia-profile.webp" type="image/webp" />
-              <img
-                src="/lusia-profile.png"
-                alt="תמונת פרופיל של ${config.profile.name} - סוכנת ביטוח פנסיוני"
-                class="w-52 h-52 md:w-64 md:h-64 rounded-3xl object-cover shadow-xl border-4 border-white"
-                width="512"
-                height="512"
-                loading="lazy"
-              />
-            </picture>
-          </div>
-          <!-- Text Content -->
-          <div class="text-center md:text-right">
-            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-800 mb-2">
-              אז מי מאחורי כל זה?
-            </h2>
-            <p class="text-primary-600 font-medium text-base md:text-lg mb-4">טוב, אספר על עצמי בקצרה.</p>
-            <p class="text-slate-600 text-base md:text-lg leading-relaxed mb-4">
-              קוראים לי לוסיה, ואני מלווה לקוחות פרטיים, עצמאיים ומעסיקים בכל מה שקשור לפנסיה, ביטוח וחיסכון. עם רישיון סוכן ביטוח פנסיוני מטעם רשות שוק ההון ומול רוב חברות השוק.
-            </p>
-            <p class="text-slate-600 text-base md:text-lg leading-relaxed mb-4">
-              אני מאמינה שכל תיק הוא סיפור אישי — אין פתרונות מדף. לכן כל לקוח מקבל מעטפת שירות מלאה, מעקב שוטף, ושקיפות מוחלטת. בלי אותיות קטנות.
-            </p>
-            <p class="text-slate-600 text-base md:text-lg leading-relaxed mb-6">
-              אם הגעתם עד לכאן, סימן שמשהו דיבר אליכם. אז בואו נדבר גם אחד על אחד.
-            </p>
-            <a href="#contact" class="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-semibold transition-colors">
-              <span>בואו נדבר</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Services Section -->
-    <section id="services" class="py-14 md:py-24 bg-white">
+    <section id="services" class="py-14 md:py-24 bg-gradient-to-b from-white to-slate-50/50">
       <div class="max-w-4xl mx-auto px-4 sm:px-6">
         <div class="text-center mb-8 md:mb-12">
           <span class="inline-block px-4 py-1.5 bg-primary-50 text-primary-600 text-sm font-medium rounded-full mb-4">
@@ -259,6 +217,81 @@ export function renderApp(config: Config): string {
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
             לתיאום שיחת בדיקה ללא עלות
           </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- YouTube Shorts Section -->
+    <section id="shorts" class="py-14 md:py-24 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-8 md:mb-12">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-800">
+            ידע פיננסי שיעזור לכם לקבל החלטות חכמות יותר
+          </h2>
+        </div>
+
+        <!-- Shorts Grid 4x2 -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          ${config.youtubeShorts.map((short) => `
+            <div class="short-card-grid">
+              <div class="short-embed-wrapper">
+                <iframe
+                  src="https://www.youtube.com/embed/${short.id}?loop=1&playlist=${short.id}"
+                  title="${short.title}"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  loading="lazy"
+                  class="short-iframe"
+                ></iframe>
+              </div>
+              <div class="short-info">
+                <h3 class="short-title">${short.title}</h3>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-14 md:py-24 bg-gradient-to-b from-white to-slate-50/50">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+          <!-- Profile Image -->
+          <div class="flex-shrink-0">
+            <picture>
+              <source srcset="/lusia-profile.webp" type="image/webp" />
+              <img
+                src="/lusia-profile.png"
+                alt="תמונת פרופיל של ${config.profile.name} - סוכנת ביטוח פנסיוני"
+                class="w-52 h-52 md:w-64 md:h-64 rounded-3xl object-cover shadow-xl border-4 border-white"
+                width="512"
+                height="512"
+                loading="lazy"
+              />
+            </picture>
+          </div>
+          <!-- Text Content -->
+          <div class="text-center md:text-right">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-800 mb-2">
+              אז מי מאחורי כל זה?
+            </h2>
+            <p class="text-primary-600 font-medium text-base md:text-lg mb-4">טוב, אספר על עצמי בקצרה.</p>
+            <p class="text-slate-600 text-base md:text-lg leading-relaxed mb-4">
+              קוראים לי לוסיה, ואני מלווה לקוחות פרטיים, עצמאיים ומעסיקים בכל מה שקשור לפנסיה, ביטוח וחיסכון. עם רישיון סוכן ביטוח פנסיוני מטעם רשות שוק ההון ומול רוב חברות השוק.
+            </p>
+            <p class="text-slate-600 text-base md:text-lg leading-relaxed mb-4">
+              אני מאמינה שכל תיק הוא סיפור אישי — אין פתרונות מדף. לכן כל לקוח מקבל מעטפת שירות מלאה, מעקב שוטף, ושקיפות מוחלטת. בלי אותיות קטנות.
+            </p>
+            <p class="text-slate-600 text-base md:text-lg leading-relaxed mb-6">
+              אם הגעתם עד לכאן, סימן שמשהו דיבר אליכם. אז בואו נדבר גם אחד על אחד.
+            </p>
+            <a href="#contact" class="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-semibold transition-colors">
+              <span>בואו נדבר</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -399,39 +432,6 @@ export function renderApp(config: Config): string {
             rel="noopener noreferrer"
           >@lusia_ins</a>
         </p>
-      </div>
-    </section>
-
-    <!-- YouTube Shorts Section -->
-    <section id="shorts" class="py-14 md:py-24 bg-white">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        <div class="text-center mb-8 md:mb-12">
-          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-800">
-            ידע פיננסי שיעזור לכם לקבל החלטות חכמות יותר
-          </h2>
-        </div>
-
-        <!-- Shorts Grid 4x2 -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-          ${config.youtubeShorts.map((short) => `
-            <div class="short-card-grid">
-              <div class="short-embed-wrapper">
-                <iframe
-                  src="https://www.youtube.com/embed/${short.id}?loop=1&playlist=${short.id}"
-                  title="${short.title}"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                  loading="lazy"
-                  class="short-iframe"
-                ></iframe>
-              </div>
-              <div class="short-info">
-                <h3 class="short-title">${short.title}</h3>
-              </div>
-            </div>
-          `).join('')}
-        </div>
       </div>
     </section>
 
